@@ -26,12 +26,16 @@ call dein#add('iCyMind/NeoSolarized')           " Color theme
 call dein#add('mhartington/oceanic-next')       " Color theme
 call dein#add('morhetz/gruvbox')                " Color theme
 call dein#add('joshdick/onedark.vim')           " Color theme
+call dein#add('w0ng/vim-hybrid')                " Color theme
 call dein#add('vim-airline/vim-airline')        " Bottom Line
 call dein#add('vim-airline/vim-airline-themes') " Bottom Line theme
+call dein#add('edkolev/tmuxline.vim')           " Tmuxline
+call dein#add('mhinz/vim-startify')             " start window
+call dein#add('Yggdroot/indentLine')            " indent Line
 
-call dein#add('gcavallanti/vim-noscrollbar')    " Scrollbar for statusline
-call dein#add('cskeeters/vim-smooth-scroll')    " Smooth scroll
-call dein#add('moll/vim-bbye')                  " Keep window when closing a buffer
+"call dein#add('gcavallanti/vim-noscrollbar')    " Scrollbar for statusline
+"call dein#add('cskeeters/vim-smooth-scroll')    " Smooth scroll
+"call dein#add('moll/vim-bbye')                  " Keep window when closing a buffer
 "call dein#add('romainl/vim-qf')                 " Quickfix / Loclist improvements
 
 """" Format code
@@ -40,7 +44,7 @@ call dein#add('sbdchd/neoformat')                                     " Automati
 "call dein#add('dhruvasagar/vim-table-mode')                           " Format tables
 
 """" Manipulate code
-call dein#add('tpope/vim-repeat')                                     " Repeat for plugins
+call dein#add('tpope/vim-repeat')                                     " Repeat for plugin
 call dein#add('vim-scripts/visualrepeat')                             " Repeat for plugins in visual mode
 call dein#add('tpope/vim-surround')                                   " Surround
 call dein#add('tpope/vim-abolish')                                    " Substitute with Smart Case (:S//)
@@ -73,6 +77,7 @@ call dein#add('SirVer/ultisnips')                                     " Snippet 
 call dein#add('honza/vim-snippets')                                   " List of snippets
 
 """" Navigate code
+call dein#add('mbbill/undotree')                                      " undo tree
 call dein#add('rizzatti/dash.vim')                                    " dash search doc
 call dein#add('haya14busa/incsearch.vim')                             " Incremental search
 call dein#add('haya14busa/incsearch-fuzzy.vim')                       " Fuzzy incremental search
@@ -86,27 +91,33 @@ call dein#add('tacahiroy/ctrlp-funky')                                " Function
 call dein#add('majutsushi/tagbar')                                    " Function navigate
 call dein#add('scrooloose/nerdtree')                                  " File navigate
 "call dein#add('ludovicchabant/vim-gutentags')                         " Automatically generate tags
+call dein#add('mileszs/ack.vim')                                      " Ack search code
 
 """" Navigate files, buffers and panes
 call dein#add('airblade/vim-rooter')                                  " Change working directory to the project root
 call dein#add('junegunn/fzf', {'build': './install --bin'})           " Fuzzy search - binary
 call dein#add('junegunn/fzf.vim')                                     " Fuzzy search - vim plugin
 call dein#add('benizi/vim-automkdir')                                 " Automatically create missing folders on save
-call dein#add('christoomey/vim-tmux-navigator')                       " Easy navigation between vim and tmux panes
+"call dein#add('christoomey/vim-tmux-navigator')                       " Easy navigation between vim and tmux panes
+call dein#add('nixprime/cpsm', {'build': './install.sh'})                                 " ctrlp matcher
 
 """" Autocomplete
 
-call dein#add('Valloric/YouCompleteMe', {'build': './install.py --go-completer'}) " Autocomplete engine
-"call dein#add('Shougo/deoplete.nvim')                                             " Autocomplete engine
-"call dein#add('Shougo/neco-vim')                                                  " Vim
-"call dein#add('eagletmt/neco-ghc')                                                " Haskell
-"call dein#add('zchee/deoplete-jedi')                                              " Python
-"call dein#add('carlitux/deoplete-ternjs')                                         " Javascript
-"call dein#add('fishbullet/deoplete-ruby')                                         " Ruby
+"call dein#add('Valloric/YouCompleteMe', {'build': './install.py --go-completer'}) " Autocomplete engine
+call dein#add('Shougo/deoplete.nvim')                                             " Autocomplete engine
+call dein#add('Shougo/neco-vim')                                                  " Vim
+call dein#add('Shougo/neco-syntax')                                               " Syntax
+call dein#add('eagletmt/neco-ghc')                                                " Haskell
+call dein#add('zchee/deoplete-jedi')                                              " Python
+call dein#add('carlitux/deoplete-ternjs')                                         " Javascript
+call dein#add('fishbullet/deoplete-ruby')                                         " Ruby
 "call dein#add('wellle/tmux-complete.vim')                                         " Tmux panes
-"call dein#add('ervandew/supertab')                                                " tab completion
-"call dein#add('zchee/deoplete-go', {'build': 'make'})                             " Go
-"call dein#add('zchee/deoplete-zsh')                                               " ZSH
+call dein#add('ervandew/supertab')                                                " tab completion
+call dein#add('zchee/deoplete-go', {'build': 'make'})                             " Go
+"call dein#add('zchee/deoplete-clang')                                             " C/C++/Object-C
+call dein#add('Rip-Rip/clang_complete', {'build': 'make install'})                " C/C++/Object-C
+call dein#add('zchee/deoplete-zsh')                                               " ZSH
+"call dein#add('tenfyzhong/CompleteParameter.vim')                                  " complete parameter
 
 """" Git
 call dein#add('tpope/vim-fugitive')                                   " Git integration
@@ -132,8 +143,16 @@ call dein#add('mpickering/hlint-refactor-vim')                        " Fix lint
 """"" Go
 call dein#add('fatih/vim-go')                                         " Go development
 """"" Python
-"call dein#add('davidhalter/jedi-vim')                                 " Python development
-
+call dein#add('davidhalter/jedi-vim')                                 " Python development
+let g:jedi#auto_initialization = 1
+let g:jedi#auto_vim_configuration = 0
+let g:jedi#squelch_py_warning = 1
+let g:jedi#goto_assignments_command = "<Leader>g"
+let g:jedi#goto_command = "<C-]>"
+let g:jedi#completions_enabled = 0
+let g:jedi#show_call_signatures = 0
+let g:jedi#usages_command = "<leader>r"
+let g:jedi#rename_command = ""
 
 """" Dein-end
 call dein#end()
@@ -152,8 +171,8 @@ set diffopt+=iwhite                                                " Ignore whit
 set expandtab                                                      " Use spaces by default, not tabs
 set formatoptions+=l                                               " Don't wrap long lines when editing them
 set formatoptions+=n                                               " Recognize numbered lists
-set formatoptions+=o                                               " Continue comment when pressing o or O
-set formatoptions+=r                                               " Continue comment when pressing Enter
+"set formatoptions+=o                                               " Continue comment when pressing o or O
+"set formatoptions+=r                                               " Continue comment when pressing Enter
 set formatoptions-=c                                               " Don't wrap long comments
 set formatoptions-=t                                               " Don't wrap long lines when typing them
 set hidden                                                         " Keep buffer around even if it is not displayed right now
@@ -187,8 +206,9 @@ set splitright
 set tabstop=2
 set title                                                          " Change terminal title based on the file name
 set updatetime=100
-set virtualedit=all
+"set virtualedit=all
 set wildmode=longest,list,full
+set wildignore=*.o,*~,*.pyc,*.class
 set completeopt=menu,longest
 
 """" Theme
@@ -205,7 +225,8 @@ set background=dark
 "let ayucolor="light"
 "let python_highlight_all=1
 "colorscheme ayu
-colorscheme palenight
+"colorscheme palenight
+colorscheme hybrid
 "let g:gruvbox_italic=1
 "let g:gruvbox_invert_selection=0
 "colorscheme gruvbox
@@ -270,8 +291,8 @@ inoremap <C-j> <C-n>
 inoremap <C-k> <C-p>
 
 """"" Navigate through location list
-nmap <C-n> <Plug>qf_loc_next
-nmap <C-p> <Plug>qf_loc_previous
+"nmap <C-n> <Plug>qf_loc_next
+"nmap <C-p> <Plug>qf_loc_previous
 
 """" Scroll command history
 cnoremap <C-j> <Down>
@@ -282,20 +303,20 @@ nmap <C-Up> <C-a>
 nmap <C-Down> <C-x>
 
 """" Close buffer and window
-nnoremap <silent> <Leader>cc :Bd<CR>
-nnoremap <silent> <Leader>CC :Bd!<CR>
+"nnoremap <silent> <Leader>cc :Bd<CR>
+"nnoremap <silent> <Leader>CC :Bd!<CR>
 nnoremap <Leader>cw :close<CR>
 
 """" Write with sudo
-cnoremap w!! w !sudo tee > /dev/null %
+cnoremap W w !sudo tee > /dev/null %
 
 """" Edit .vimrc
 nnoremap <silent> <Leader>ev :e $MYVIMRC<CR>
 nnoremap <silent> <Leader>sv :so $MYVIMRC<CR>
 
 """" Navigate through visual lines
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
+"nnoremap <expr> j v:count ? 'j' : 'gj'
+"nnoremap <expr> k v:count ? 'k' : 'gk'
 
 """" Indent / unindent
 "nnoremap <S-Tab> <<
@@ -343,9 +364,15 @@ nnoremap <Leader>y :echo expand('%:p')<CR>
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 
-"" Split
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Split
 noremap <Leader>- :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
+
 
 function! HideNumber()
       if(&number)
@@ -358,13 +385,23 @@ nnoremap <F2> :call HideNumber()<CR>
 
 " auto close preview when leave insert
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS>  deoplete#smart_close_popup()."\<C-h>"
+
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  return pumvisible() ? "\<C-y>" : "\<CR>"
+function! s:my_cr_function() abort
+  return deoplete#close_popup() . "\<CR>"
 endfunction
+
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+"  "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+"  " For no inserting <CR> key.
+"  return pumvisible() ? "\<C-y>" : "\<CR>"
+"endfunction
 
 " 定义函数AutoSetFileHead，自动插入文件头
 autocmd BufNewFile *.sh,*.py exec ":call AutoSetFileHead()"
@@ -395,7 +432,9 @@ endif
 """ Plugins configuration
 """" Air Line
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:ale_pattern_options = {'\.txt$': {'ale_enabled': 0}}
 if !exists('g:airline_symbols')
 let g:airline_symbols = {}
 endif
@@ -415,10 +454,11 @@ let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline_theme='cool'
+let g:airline_theme='onedark'
+let airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
 
 """" ALE
-let g:ale_open_list = 1
+let g:ale_open_list = 0
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_keep_list_window_open = 0
 let g:ale_lint_on_insert_leave = 1
@@ -426,6 +466,7 @@ let g:ale_loclist_msg_format='%linter%: %code: %%s'
 let g:ale_linters = {
       \ 'go': ['golint', 'go vet', 'go build'],
       \ 'python': ['flake8'],
+      \ 'c': ['clang'],
       \ }
 let g:ale_python_flake8_use_global = 1
 let g:ale_python_flake8_options = '--ignore=E501,E226'
@@ -437,6 +478,105 @@ nmap <leader>r <Plug>(ale_find_references)
 nmap <Leader>s :ALEToggle<CR>
 nnoremap <leader>ep :ALEPreviousWrap<CR>
 nnoremap <leader>en :ALENextWrap<CR>
+let g:ale_c_clang_options = ''
+
+function! IsWindows()
+  " Check for win32 is enough since it's true on win64
+  return has('win32')
+endfunction
+
+function! ProcessFilename(filename, root)
+  " Handle Unix absolute path
+  if matchstr(a:filename, '\C^[''"\\]\=/') != ''
+    let l:filename = a:filename
+  " Handle Windows absolute path
+  elseif IsWindows()
+       \ && matchstr(a:filename, '\C^"\=[a-zA-Z]:[/\\]') != ''
+    let l:filename = a:filename
+  " Convert relative path to absolute path
+  else
+    " If a windows file, the filename may need to be quoted.
+    if IsWindows()
+      let l:root = substitute(a:root, '\\', '/', 'g')
+      if matchstr(a:filename, '\C^".*"\s*$') == ''
+        let l:filename = substitute(a:filename, '\C^\(.\{-}\)\s*$'
+                                            \ , '"' . l:root . '\1"', 'g')
+      else
+        " Strip first double-quote and prepend the root.
+        let l:filename = substitute(a:filename, '\C^"\(.\{-}\)"\s*$'
+                                            \ , '"' . l:root . '\1"', 'g')
+      endif
+      let l:filename = substitute(l:filename, '/', '\\', 'g')
+    else
+      " For Unix, assume the filename is already escaped/quoted correctly
+      let l:filename = shellescape(a:root) . a:filename
+    endif
+  endif
+
+  return l:filename
+endfunction
+
+function! ALEParseClangOpts()
+
+  let l:flagInfo = {
+  \   '-I': {
+  \     'pattern': '-I\s*',
+  \     'output': '-I'
+  \   },
+  \   '-F': {
+  \     'pattern': '-F\s*',
+  \     'output': '-F'
+  \   },
+  \   '-iquote': {
+  \     'pattern': '-iquote\s*',
+  \     'output': '-iquote'
+  \   },
+  \   '-include': {
+  \     'pattern': '-include\s\+',
+  \     'output': '-include '
+  \   }
+  \ }
+
+  let l:flagPatterns = []
+  for l:flag in values(l:flagInfo)
+    let l:flagPatterns = add(l:flagPatterns, l:flag.pattern)
+  endfor
+  let l:flagPattern = '\%(' . join(l:flagPatterns, '\|') . '\)'
+
+  let l:local_conf = findfile('.clang_complete', getcwd() . ',.;')
+  if l:local_conf == '' || !filereadable(l:local_conf)
+    return
+  endif
+
+  let l:sep = '/'
+  if IsWindows()
+    let l:sep = '\'
+  endif
+
+  let l:root = fnamemodify(l:local_conf, ':p:h') . l:sep
+
+  let l:opts = readfile(l:local_conf)
+  for l:opt in l:opts
+    " Ensure passed filenames are absolute. Only performed on flags which
+    " require a filename/directory as an argument, as specified in s:flagInfo
+    if matchstr(l:opt, '\C^\s*' . l:flagPattern . '\s*') != ''
+      let l:flag = substitute(l:opt, '\C^\s*\(' . l:flagPattern . '\).*'
+                            \ , '\1', 'g')
+      let l:flag = substitute(l:flag, '^\(.\{-}\)\s*$', '\1', 'g')
+      let l:filename = substitute(l:opt,
+                                \ '\C^\s*' . l:flagPattern . '\(.\{-}\)\s*$',
+                                \ '\1', 'g')
+      let l:filename = ProcessFilename(l:filename, l:root)
+      let l:opt = l:flagInfo[l:flag].output . l:filename
+    endif
+
+    "let b:clang_user_options .= ' ' . l:opt
+    let g:ale_c_clang_options .= ' ' . l:opt
+  endfor
+endfunction
+call ALEParseClangOpts()
+"let g:ale_c_clang_options = "-I/home/wyang/work/c/bdengine/src/core -I/home/wyang/work/c/bdengine/src/event -I/home/wyang/work/c/bdengine/src/event/modules -I/home/wyang/work/c/bdengine/src/os/unix -I/home/wyang/work/c/bdengine/objs -W -Wall -Wpointer-arith -Wno-unused-parameter -Werror -I/home/wyang/work/c/bdengine/src/http -I/home/wyang/work/c/bdengine/src/http/modules"
+
 
 """" Asterisk
 map *  <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)
@@ -453,14 +593,40 @@ function! CleanPlugin()
       call dein#recache_runtimepath()
 endfunction
 """" Deoplete
-"let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 
-"call deoplete#custom#source('_', 'min_pattern_length', 1)
-"call deoplete#custom#source('around', 'rank', 100)
-"call deoplete#custom#source('ultisnips', 'rank', 200)
+call deoplete#custom#option('auto_refresh_delay', 10)
+call deoplete#custom#option('auto_complete_delay', 10)
+call deoplete#custom#option('refresh_always', v:false)
+call deoplete#custom#source('_', 'min_pattern_length', 1)
+call deoplete#custom#source('_', 'matchers', ['matcher_fuzzy'])
+call deoplete#custom#source('around', 'rank', 100)
+call deoplete#custom#source('ultisnips', 'rank', 1000)
+call deoplete#custom#source('buffer', 'rank', 999)
+"set completeopt+=noinsert
 
 """" Deoplete-jedi (Python completion)
-"let deoplete#sources#jedi#show_docstring = 0
+let deoplete#sources#jedi#show_docstring = 1
+
+"""" Deoplete-clang (c/c++/object-c completion)
+"let g:deoplete#sources#clang#libclang_path = '/usr/lib/x86_64-linux-gnu/libclang-3.8.so'
+"let g:deoplete#sources#clang#flags = [
+"\ "-Isrc/core",
+"\ "-Isrc/event",
+"\ "-Isrc/event/modules",
+"\ "-Isrc/os/unix",
+"\ "-Iobjs",
+"\ "-W",
+"\ "-Wall",
+"\ "-Wpointer-arith",
+"\ "-Wno-unused-parameter",
+"\ "-Werror",
+"\ "-Isrc/http",
+"\ "-Isrc/http/modules",
+"\ "-Wl",
+"\ "-E",
+"\]
+
 
 """" Deoplete-ternjs (JS completion)
 "let g:tern_request_timeout = 1
@@ -476,9 +642,9 @@ xmap <Leader>= <Plug>(EasyAlign)
 
 """" FZF
 " Make :Ag not match file names, only file contents
-command! -bang -nargs=* AgContents call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+"command! -bang -nargs=* AgContents call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
-nnoremap <silent> <Leader>f :AgContents<CR>
+"nnoremap <silent> <Leader>f :AgContents<CR>
 
 """" Ghc-mod
 nnoremap <silent> <leader>ht :w<CR>:GhcModType<CR>:GhcModTypeClear<CR>
@@ -511,6 +677,9 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_types = 1
+
+"""" C/C++
+let g:clang_library_path = '/usr/lib/x86_64-linux-gnu/libclang-3.8.so'
 
 """" Haskell Conceal
 let hscoptions="𝐒𝐓𝐄𝐌wRTBQZDC"
@@ -571,10 +740,10 @@ omap T <Plug>Sneak_T
 let g:tcommentTextObjectInlineComment = ''
 
 """" UltiSnips
-let g:UltiSnipsExpandTrigger       = "<c-k>"
+let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-k>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-j>"
-let g:UltiSnipsListSnippets = "<c-j>"
+let g:UltiSnipsListSnippets = "<c-tab>"
 let g:UltiSnipsSnippetDirectories  = ['UltiSnips']
 
 """" vim-gutentags
@@ -589,7 +758,7 @@ let g:rooter_silent_chdir = 1
 let g:rooter_resolve_links = 1
 
 """" vim-smooth-scroll
-let g:ms_per_line=2
+let g:ms_per_line=1
 
 """" vim-table-mode
 let g:table_mode_verbose = 0
@@ -605,21 +774,23 @@ nmap <leader>l <Plug>(qf_qf_toggle)
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
-let g:ctrlp_status_func = {
-  \ 'main': 'CtrlPStatusFunc_1',
-  \ 'prog': 'CtrlPStatusFunc_2',
-  \ }
-function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
-  return lightline#statusline(0)
-endfunction
-function! CtrlPStatusFunc_2(str)
-  return lightline#statusline(0)
-endfunction
+let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+autocmd BufEnter ControlP let b:ale_enabled = 0
+"let g:ctrlp_status_func = {
+  "\ 'main': 'CtrlPStatusFunc_1',
+  "\ 'prog': 'CtrlPStatusFunc_2',
+"  \ }
+"function! CtrlPStatusFunc_1(focus, byfname, regex, prev, item, next, marked)
+"  return lightline#statusline(0)
+"endfunction
+"function! CtrlPStatusFunc_2(str)
+"  return lightline#statusline(0)
+"endfunction
 
-let g:tagbar_status_func = 'TagbarStatusFunc'
-function! TagbarStatusFunc(current, sort, fname, ...) abort
-  return lightline#statusline(0)
-endfunction
+"let g:tagbar_status_func = 'TagbarStatusFunc'
+"function! TagbarStatusFunc(current, sort, fname, ...) abort
+"  return lightline#statusline(0)
+"endfunction
 
 """" ctrlp-funky
 nnoremap <c-r> :CtrlPFunky<Cr>
@@ -636,20 +807,20 @@ let g:tagbar_width = 33
 map <leader><space> :FixWhitespace<cr>
 
 """" YouCompleteMe
-au BufEnter *.py nmap <c-]> :YcmCompleter GoTo<CR>
-au BufEnter *.go nmap <c-]> :YcmCompleter GoTo<CR>
-au BufEnter *.py nmap K :YcmCompleter GetDoc<CR>
-au BufEnter *.txt nmap <C-]> :tag <C-R>=expand('<cword>')<CR><CR><Paste>
-let g:ycm_python_binary_path = 'python'
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_server_keep_logfiles = 0
-let g:ycm_server_log_level = 'info'
-let g:ycm_filepath_completion_use_working_dir = 1
-let g:ycm_goto_buffer_command = 'same-buffer'
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_path_to_python_interpreter = ''
+"au BufEnter *.py nmap <c-]> :YcmCompleter GoTo<CR>
+"au BufEnter *.go nmap <c-]> :YcmCompleter GoTo<CR>
+"au BufEnter *.py nmap K :YcmCompleter GetDoc<CR>
+"au BufEnter *.txt nmap <C-]> :tag <C-R>=expand('<cword>')<CR><CR><Paste>
+"let g:ycm_python_binary_path = 'python'
+"let g:ycm_collect_identifiers_from_comments_and_strings = 1
+"let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_server_keep_logfiles = 0
+"let g:ycm_server_log_level = 'info'
+"let g:ycm_filepath_completion_use_working_dir = 1
+"let g:ycm_goto_buffer_command = 'same-buffer'
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_path_to_python_interpreter = ''
 """" dash vim
 if has('macunix')
   nmap <leader>d :Dash<CR>
@@ -657,6 +828,31 @@ endif
 """" neoformat
 let g:neoformat_enabled_python = ['autopep8']
 
+"""" Ack
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+cnoreabbrev LAck LAck!
+function! Find()
+  let pattern = input('Search for pattern: ', expand('<cword>'))
+  if pattern == ''
+    return
+  endif
+  execute 'LAck '.pattern
+endfunction
+
+noremap <Leader>f :call Find()<CR>
+
+"""" CompleteParameter
+let g:complete_parameter_use_ultisnips_mapping = 1
+
+"""" undo tree
+if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+endif
+nnoremap <F5> :UndotreeToggle<cr>
 """ Functions
 """" Removes trailing whitespace
 function! RemoveTrailingSpaces()
@@ -767,6 +963,37 @@ function! SetTerminalTitle()
 endfunction
 
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
+"""" Toggle quick fix
+function! GetBufferList()
+  redir =>buflist
+  silent! ls!
+  redir END
+  return buflist
+endfunction
+
+function! ToggleList(bufname, pfx)
+  let buflist = GetBufferList()
+  for bufnum in map(filter(split(buflist, '\n'), 'v:val =~ "'.a:bufname.'"'), 'str2nr(matchstr(v:val, "\\d\\+"))')
+    if bufwinnr(bufnum) != -1
+      exec(a:pfx.'close')
+      return
+    endif
+  endfor
+  if a:pfx == 'l' && len(getloclist(0)) == 0
+      echohl ErrorMsg
+      echo "Location List is Empty."
+      return
+  endif
+  let winnr = winnr()
+  exec(a:pfx.'open')
+  if winnr() != winnr
+    wincmd p
+  endif
+endfunction
+
+nmap <silent> <leader>l :call ToggleList("Location List", 'l')<CR>
+nmap <silent> <leader>ee :call ToggleList("Quickfix List", 'c')<CR>
 
 """ AutoCmd
 augroup helper-windows-close

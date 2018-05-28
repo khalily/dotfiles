@@ -7,10 +7,17 @@ if [ $system = 'Linux' ];then
   repo_path=/tmp/neovim-$(date +%Y-%m-%d-%H-%M)
   git clone https://github.com/neovim/neovim.git $repo_path
   cd $repo_path
+  sudo apt-get install -y libboost-dev libboost-program-options-dev libpython3-all-dev
   sudo apt-get install -y silversearcher-ag
   sudo apt-get install -y ack-grep
   sudo apt-get install -y cmake
   make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=~/.nvim"
+  make install
+
+  git clone https://github.com/tmux/tmux.git /tmp/tmux
+  cd /tmp/tmux
+  sh autogen.sh
+  ./configure --prefix="$HOME/.tmux" && make -j12
   make install
 
   curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
@@ -19,6 +26,7 @@ if [ $system = 'Linux' ];then
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:~/.nvim/bin:$PATH"
+export PATH="$~/.tmux/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
