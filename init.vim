@@ -1,4 +1,4 @@
-""" Plugins
+""" Pluginns
 """" Dein-begin
 
 if &runtimepath !~# '/dein.vim'
@@ -79,8 +79,8 @@ call dein#add('honza/vim-snippets')                                   " List of 
 """" Navigate code
 call dein#add('mbbill/undotree')                                      " undo tree
 call dein#add('rizzatti/dash.vim')                                    " dash search doc
-call dein#add('haya14busa/incsearch.vim')                             " Incremental search
-call dein#add('haya14busa/incsearch-fuzzy.vim')                       " Fuzzy incremental search
+"call dein#add('haya14busa/incsearch.vim')                             " Incremental search
+"call dein#add('haya14busa/incsearch-fuzzy.vim')                       " Fuzzy incremental search
 call dein#add('osyo-manga/vim-anzu')                                  " Show search count
 call dein#add('haya14busa/vim-asterisk')                              " Star * improvements
 call dein#add('justinmk/vim-sneak')                                   " Improved F and T
@@ -99,7 +99,7 @@ call dein#add('junegunn/fzf', {'build': './install --bin'})           " Fuzzy se
 call dein#add('junegunn/fzf.vim')                                     " Fuzzy search - vim plugin
 call dein#add('benizi/vim-automkdir')                                 " Automatically create missing folders on save
 "call dein#add('christoomey/vim-tmux-navigator')                       " Easy navigation between vim and tmux panes
-call dein#add('nixprime/cpsm', {'build': './install.sh'})                                 " ctrlp matcher
+"call dein#add('nixprime/cpsm', {'build': './install.sh'})                                 " ctrlp matcher
 
 """" Autocomplete
 
@@ -109,6 +109,8 @@ call dein#add('Shougo/neco-vim')                                                
 call dein#add('Shougo/neco-syntax')                                               " Syntax
 call dein#add('eagletmt/neco-ghc')                                                " Haskell
 call dein#add('zchee/deoplete-jedi')                                              " Python
+call dein#add('Shougo/echodoc.vim')
+
 call dein#add('carlitux/deoplete-ternjs')                                         " Javascript
 call dein#add('fishbullet/deoplete-ruby')                                         " Ruby
 "call dein#add('wellle/tmux-complete.vim')                                         " Tmux panes
@@ -153,6 +155,7 @@ let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures = 0
 let g:jedi#usages_command = "<leader>r"
 let g:jedi#rename_command = ""
+set noshowmode
 
 """" Dein-end
 call dein#end()
@@ -434,6 +437,7 @@ endif
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+
 let g:ale_pattern_options = {'\.txt$': {'ale_enabled': 0}}
 if !exists('g:airline_symbols')
 let g:airline_symbols = {}
@@ -606,7 +610,13 @@ call deoplete#custom#source('buffer', 'rank', 999)
 "set completeopt+=noinsert
 
 """" Deoplete-jedi (Python completion)
-let deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#sources#jedi#show_docstring = 0
+let g:deoplete#sources#jedi#server_timeout = 60
+
+"""" echodoc
+let g:echodoc#enable_force_overwrite = 0
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'echo'
 
 """" Deoplete-clang (c/c++/object-c completion)
 "let g:deoplete#sources#clang#libclang_path = '/usr/lib/x86_64-linux-gnu/libclang-3.8.so'
@@ -694,18 +704,18 @@ nnoremap <silent> <leader>hr :call ApplyOneSuggestion()<CR>
 nnoremap <silent> <leader>hR :call ApplyAllSuggestions()<CR>
 
 """" Incsearch
-let g:incsearch#auto_nohlsearch = 1
+"let g:incsearch#auto_nohlsearch = 1
 
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+"map / <Plug>(incsearch-forward)
+"map ? <Plug>(incsearch-backward)
+"map g/ <Plug>(incsearch-stay)
 
-map z/ <Plug>(incsearch-fuzzy-/)
-map z? <Plug>(incsearch-fuzzy-?)
-map zg/ <Plug>(incsearch-fuzzy-stay)
+"map z/ <Plug>(incsearch-fuzzy-/)
+"map z? <Plug>(incsearch-fuzzy-?)
+"map zg/ <Plug>(incsearch-fuzzy-stay)
 
-map n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)zMzv
-map N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)zMzv
+"map n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)zMzv
+"map N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)zMzv
 
 """" Markdown composer
 let g:markdown_composer_open_browser = 1
@@ -740,10 +750,10 @@ omap T <Plug>Sneak_T
 let g:tcommentTextObjectInlineComment = ''
 
 """" UltiSnips
-let g:UltiSnipsExpandTrigger       = "<tab>"
+let g:UltiSnipsExpandTrigger       = "<c-x>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-k>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-j>"
-let g:UltiSnipsListSnippets = "<c-tab>"
+"let g:UltiSnipsListSnippets = "<s-tab>"
 let g:UltiSnipsSnippetDirectories  = ['UltiSnips']
 
 """" vim-gutentags
@@ -774,7 +784,7 @@ nmap <leader>l <Plug>(qf_qf_toggle)
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
-let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+"let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 autocmd BufEnter ControlP let b:ale_enabled = 0
 "let g:ctrlp_status_func = {
   "\ 'main': 'CtrlPStatusFunc_1',

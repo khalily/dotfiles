@@ -1,6 +1,21 @@
 #!/usr/bin/env bash
 
-set -e
+function install_package() {
+  local package=$1
+  local system=$(uname -s)
+  case $system in
+    'Darwin' )
+      brew info $package | grep --quiet 'Not installed' && brew install $package
+      ;;
+    'Linux' )
+      apt-get install -y $package
+      ;;
+    * )
+      printf "Unspport system %s" $system
+      exit 1
+      ;;
+  esac
+}
 
 system=$(uname -s)
 if [ $system = 'Linux' ];then
@@ -35,12 +50,13 @@ EOF
 fi
 
 if [ $system = 'Darwin' ];then
-  brew install ack
-  brew install cmake
-  brew install neovim
-  brew install pyenv
-  brew install pyenv-virtualenv
-  brew install the_silver_searcher
+  install_package ack
+  install_package cmake
+  install_package neovim
+  install_package pyenv
+  install_package pyenv-virtualenv
+  install_package the_silver_searcher
+  if ! $(grep PYENV_ROOT ~/.zshrc); then
   cat << "EOF" >> ~/.zshrc
 
 export PYENV_ROOT="$HOME/.pyenv"
@@ -49,20 +65,21 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 EOF
+  fi
   source ~/.zshrc
 fi
 
 sudo pip install autopep8
 sudo pip install flake8
-pyenv install 3.6.5
+pyenv install -s 3.6.5
 CONFIGURE_OPTS="--enable-shared" pyenv virtualenv 3.6.5 py3neovim
 pyenv activate py3neovim
 pip install neovim
 pyenv deactivate py3neovim
 
-echo "================================"
-echo "   \nInstall Successful.\n"
-echo "================================"
-echo  "\nopen your nvim.\n"
+echo -e "================================"
+echo -e "   \nInstall Successful.\n"
+echo -e "================================"
+echo -e  "\nopen your nvim.\n"
 
 
