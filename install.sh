@@ -42,7 +42,7 @@ if [ $system = 'Linux' ];then
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:~/.nvim/bin:$PATH"
-export PATH="$~/.tmux/bin:$PATH"
+export PATH="~/.tmux/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
