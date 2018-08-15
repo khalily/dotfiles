@@ -26,6 +26,7 @@ if [ $system = 'Linux' ];then
   sudo apt-get install -y silversearcher-ag
   sudo apt-get install -y ack-grep
   sudo apt-get install -y cmake
+  sudo apt-get install pkgconf libtool libtool-bin automake gettext libevent-dev libncurses5-dev
   make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=~/.nvim"
   make install
 
