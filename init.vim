@@ -360,7 +360,7 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
 map <Leader>q :q!<CR>
-map <Leader>qq :qa!<CR>
+"map <Leader>qq :qa!<CR>
 au FileType vimrc BufWritePost :source $MYVIMRC<CR>
 nmap <Leader>h :exec "h" expand('<cword>')<CR>
 nnoremap <Leader>y :echo expand('%:p')<CR>
@@ -862,10 +862,10 @@ noremap <Leader>f :call Find()<CR>
 let g:complete_parameter_use_ultisnips_mapping = 1
 
 """" undo tree
-if has("persistent_undo")
-    set undodir=~/.undodir/
-    set undofile
-endif
+"if has("persistent_undo")
+    "set undodir=~/.undodir/
+    "set undofile
+"endif
 nnoremap <F5> :UndotreeToggle<cr>
 """ Functions
 """" Removes trailing whitespace
