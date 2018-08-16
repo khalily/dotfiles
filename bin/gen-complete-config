@@ -1,2 +1,2 @@
 #!/bin/sh
-make CC='~/.config/nvim/bin/cc_args.py clang' CXX='~/.config/nvim/bin/cc_args.py clang++' -B
+make CC='~/.config/nvim/bin/cc_args.py clang' CXX='~/.config/nvim/bin/cc_args.py clang++' -B -j 20

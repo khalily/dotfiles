@@ -83,7 +83,7 @@ call dein#add('rizzatti/dash.vim')                                    " dash sea
 "call dein#add('haya14busa/incsearch.vim')                             " Incremental search
 "call dein#add('haya14busa/incsearch-fuzzy.vim')                       " Fuzzy incremental search
 call dein#add('osyo-manga/vim-anzu')                                  " Show search count
-call dein#add('haya14busa/vim-asterisk')                              " Star * improvements
+"call dein#add('haya14busa/vim-asterisk')                              " Star * improvements
 call dein#add('justinmk/vim-sneak')                                   " Improved F and T
 call dein#add('t9md/vim-smalls')                                      " Quick jump anywhere
 call dein#add('farmergreg/vim-lastplace')                             " Restore cursor position
@@ -368,6 +368,8 @@ nnoremap <Leader>y :echo expand('%:p')<CR>
 inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 
+map <leader>/ :nohlsearch<CR>
+
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
@@ -436,7 +438,7 @@ endif
 """ Plugins configuration
 """" Air Line
 let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensionstmuxline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 
 let g:ale_pattern_options = {'\.txt$': {'ale_enabled': 0}}
@@ -460,7 +462,7 @@ let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline_theme='onedark'
-let airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
+"let airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
 
 """" ALE
 let g:ale_open_list = 0
@@ -472,6 +474,7 @@ let g:ale_linters = {
       \ 'go': ['golint', 'go vet', 'go build'],
       \ 'python': ['flake8'],
       \ 'c': ['clang'],
+      \ 'cpp': ['clang'],
       \ }
 let g:ale_python_flake8_use_global = 1
 let g:ale_python_flake8_options = '--ignore=E501,E226'
@@ -584,10 +587,10 @@ call ALEParseClangOpts()
 
 
 """" Asterisk
-map *  <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)
-map #  <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)
-map g* <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)
-map g# <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)
+"map *  <Plug>(incsearch-nohl0)<Plug>(asterisk-z*)
+"map #  <Plug>(incsearch-nohl0)<Plug>(asterisk-z#)
+"map g* <Plug>(incsearch-nohl0)<Plug>(asterisk-gz*)
+"map g# <Plug>(incsearch-nohl0)<Plug>(asterisk-gz#)
 
 """" DelimitMate
 let delimitMate_expand_cr = 1
@@ -748,7 +751,7 @@ omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
 
 """" TComment
-let g:tcommentTextObjectInlineComment = ''
+let g:tcomment_textobject_inlinecomment = ''
 
 """" UltiSnips
 let g:UltiSnipsExpandTrigger       = "<c-x>"
