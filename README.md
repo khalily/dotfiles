@@ -22,7 +22,7 @@ dotfiles support nvim
  ```bash
  ln -sf ~/.config/nvim/tmux.conf ~/.tmux.conf
  ln -sf ~/.config/nvim/tmux-statusline-color.conf ~/.tmux-statusline-color.conf
- ```bash
+ ```
 
  ### 安装字体
  ```bash
