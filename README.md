@@ -8,12 +8,26 @@ dotfiles support nvim
 ## 安装
 
 
+ ### 安装 nvim
  ```bash
  curl -L https://raw.githubusercontent.com/khalily/dotfiles/master/install.sh | bash
+ ```
+
+ ### clone nvim 配置
+ ```bash
  git clone https://github.com/khalily/dotfiles ~/.config/nvim
+ ```
+
+ ### tmux 配置
+ ```bash
  ln -sf ~/.config/nvim/tmux.conf ~/.tmux.conf
  ln -sf ~/.config/nvim/tmux-statusline-color.conf ~/.tmux-statusline-color.conf
- ```
+ ```bash
+
+ ### 安装字体
+ ```bash
+ 打开 fonts/consola.ttf 安装，并在终端中设置字体为 consola
+ ```	 
 
 ## 快捷键
 
