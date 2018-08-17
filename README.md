@@ -2,7 +2,7 @@
 
 dotfiles support nvim
 ========
-
+![](screenshots/vim.jpg)
 --------
 
 ## 安装
