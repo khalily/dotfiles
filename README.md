@@ -72,4 +72,4 @@ dotfiles support nvim
 | `<Prefix>c`	       | 创建新窗口              	      |
 | `<Prefix><Ctrl>a`    | 回到上一个窗口                       |
 | `<Prefix>-`	       | 水平分割窗口                         |
-| `<Prefix>|`	       | 垂直分割窗口                         |
+| `<Prefix>\|`	       | 垂直分割窗口                         |
