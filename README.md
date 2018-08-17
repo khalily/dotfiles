@@ -73,3 +73,8 @@ dotfiles support nvim
 | `<Prefix><Ctrl>a`    | 回到上一个窗口                       |
 | `<Prefix>-`	       | 水平分割窗口                         |
 | `<Prefix>\|`	       | 垂直分割窗口                         |
+| `<Prefix>[`	       | 像vim一样操作当前窗口                |
+| `<Ctrl>j`	       | 向下移动窗口                         |
+| `<Ctrl>k`	       | 向上移动窗口                         |
+| `<Ctrl>l`	       | 向右移动窗口                         |
+| `<Ctrl>h`	       | 向左移动窗口                         |
