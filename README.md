@@ -29,17 +29,17 @@ dotfiles support nvim
  打开 fonts/consola.ttf 安装，并在终端中设置字体为 consola
  ```	 
 
-## 快捷键
+## nvim 快捷键
 
-以下是部分快捷键，更详细的快捷键请查阅 .vimrc
+以下是部分快捷键，更详细的快捷键请查阅 init.vim
 
 | 快捷键       | 说明                                 |
 | -------      | -----                                |
 | `,`          | Leader Key                           |
 | `<leader>n`  | 打开/关闭代码资源管理器              |
 | `<leader>t`  | 打开/关闭函数列表                    |
-| `<leader>ev` | 编辑 vimrc                           |
-| `<leader>sv` | 加载 vimrc                           |
+| `<leader>ev` | 编辑 init.vim                        |
+| `<leader>sv` | 加载 init.vim                        |
 | `<leader>y`  | 打印当前文件名                       |
 | `<leader>-`  | 水平分割当前窗口                     |
 | `<leader>v`  | 垂直分割当前窗口                     |
@@ -63,3 +63,13 @@ dotfiles support nvim
 | `;`          | `:`                                  |
 | `<F2>`       | 显示/关闭行号                        |
 | `<F5>`       | 显示/关闭 Undo Tree                  |
+
+## tmux 快捷键
+
+| 快捷键	       | 说明                                 |
+| -------	       | -----                                |
+| `<Ctrl>a`	       | Prefix Key                           |
+| `<Prefix>c`	       | 创建新窗口              	      |
+| `<Prefix><Ctrl>a`    | 回到上一个窗口                       |
+| `<Prefix>-`	       | 水平分割窗口                         |
+| `<Prefix>|`	       | 垂直分割窗口                         |
