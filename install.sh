@@ -57,6 +57,7 @@ if [ $system = 'Darwin' ];then
   install_package pyenv
   install_package pyenv-virtualenv
   install_package the_silver_searcher
+  install_package tmux
   if ! $(grep PYENV_ROOT ~/.zshrc); then
   cat << "EOF" >> ~/.zshrc
 
