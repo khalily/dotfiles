@@ -200,7 +200,9 @@ set shiftround                                                     " Round inden
 set shiftwidth=2                                                   " Tab shifts by this number of spaces
 set shortmess+=I                                                   " Don't show intro msg when starting vim
 set shortmess+=c                                                   " Don't echo while autocompletion in insert mode
+set autoread                                                       " Auto load change
 set showcmd
+set shortmess=atI
 set showtabline=2
 set sidescrolloff=3                                                " Number of columns to keep on the left/right of the cursor
 set smartcase
@@ -214,6 +216,8 @@ set updatetime=100
 set wildmode=longest,list,full
 set wildignore=*.o,*~,*.pyc,*.class
 set completeopt=menu,longest
+set t_ti= t_te=                                                    " Exit vim View file
+set scrolloff=7                                                    " Scroll offset
 
 """" Theme
 if (has("nvim"))
@@ -312,7 +316,7 @@ nmap <C-Down> <C-x>
 nnoremap <Leader>cw :close<CR>
 
 """" Write with sudo
-cnoremap W w !sudo tee > /dev/null %
+cnoremap w! w !sudo tee > /dev/null %
 
 """" Edit .vimrc
 nnoremap <silent> <Leader>ev :e $MYVIMRC<CR>
@@ -450,7 +454,7 @@ vnoremap <silent> # :<C-U>
 """ Plugins configuration
 """" Air Line
 let g:airline#extensions#ale#enabled = 1
-let g:airline#extensionstmuxline#enabled = 0
+let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#tabline#enabled = 1
 
 let g:ale_pattern_options = {'\.txt$': {'ale_enabled': 0}}
@@ -766,7 +770,7 @@ omap T <Plug>Sneak_T
 let g:tcomment_textobject_inlinecomment = ''
 
 """" UltiSnips
-let g:UltiSnipsExpandTrigger       = "<c-x>"
+let g:UltiSnipsExpandTrigger       = "<c-u>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-k>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-j>"
 "let g:UltiSnipsListSnippets = "<s-tab>"

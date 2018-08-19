@@ -27,7 +27,7 @@ dotfiles support nvim
  ### 安装字体
  ```bash
  打开 fonts/consola.ttf 安装，并在终端中设置字体为 consola
- ```	 
+ ```
 
 ## nvim 快捷键
 
