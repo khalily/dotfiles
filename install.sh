@@ -26,7 +26,10 @@ if [ $system = 'Linux' ];then
   sudo apt-get install -y silversearcher-ag
   sudo apt-get install -y ack-grep
   sudo apt-get install -y cmake
-  sudo apt-get install pkgconf libtool libtool-bin automake gettext libevent-dev libncurses5-dev
+  sudo apt-get install -y pkgconf libtool libtool-bin automake gettext libevent-dev libncurses5-dev
+  sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+xz-utils tk-dev libffi-dev liblzma-dev libssl1.0-dev
   make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=~/.nvim"
   make install
 
@@ -78,6 +81,13 @@ CONFIGURE_OPTS="--enable-shared" pyenv virtualenv 3.6.5 py3neovim
 pyenv activate py3neovim
 pip install neovim
 pyenv deactivate py3neovim
+
+pyenv install -s 2.7.11
+CONFIGURE_OPTS="--enable-shared" pyenv virtualenv 2.7.11 py2neovim
+pyenv activate py2neovim
+pip install neovim
+pyenv deactivate py2neovim
+
 
 echo -e "================================"
 echo -e "   \nInstall Successful.\n"

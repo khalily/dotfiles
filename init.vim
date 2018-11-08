@@ -44,7 +44,7 @@ call dein#add('sbdchd/neoformat')                                     " Automati
 "call dein#add('dhruvasagar/vim-table-mode')                           " Format tables
 
 """" Manipulate code
-call dein#add('tpope/vim-repeat')                                     " Repeat for plugin
+"call dein#add('tpope/vim-repeat')                                     " Repeat for plugin
 call dein#add('vim-scripts/visualrepeat')                             " Repeat for plugins in visual mode
 call dein#add('tpope/vim-surround')                                   " Surround
 call dein#add('tpope/vim-abolish')                                    " Substitute with Smart Case (:S//)
@@ -93,6 +93,7 @@ call dein#add('majutsushi/tagbar')                                    " Function
 call dein#add('scrooloose/nerdtree')                                  " File navigate
 "call dein#add('ludovicchabant/vim-gutentags')                         " Automatically generate tags
 call dein#add('mileszs/ack.vim')                                      " Ack search code
+"call dein#add('osyo-manga/vim-snowdrop')                              " libclang in Vim
 
 """" Navigate files, buffers and panes
 call dein#add('airblade/vim-rooter')                                  " Change working directory to the project root
@@ -156,7 +157,9 @@ let g:jedi#completions_enabled = 0
 let g:jedi#show_call_signatures = 0
 let g:jedi#usages_command = "<leader>r"
 let g:jedi#rename_command = ""
+let g:jedi#force_py_version = 3
 set noshowmode
+
 
 """" Dein-end
 call dein#end()
@@ -243,9 +246,9 @@ colorscheme hybrid
 """" System
 if !empty($PYENV_ROOT)
 let g:python3_host_prog=$PYENV_ROOT."/versions/py3neovim/bin/python"
-let g:python2_host_prog=$PYENV_ROOT."/versions/py2neovim/bin/python"
+let g:python_host_prog=$PYENV_ROOT."/versions/py2neovim/bin/python"
 let g:python3_host_skip_check = 1
-let g:python2_host_skip_check = 1
+let g:python_host_skip_check = 1
 endif
 
 """ Keyboard shortcuts
@@ -710,6 +713,21 @@ let g:go_highlight_types = 1
 
 """" C/C++
 let g:clang_library_path = '/usr/lib/x86_64-linux-gnu/libclang-3.8.so'
+
+let g:clang_auto_user_options = "compile_commands.json,.clang_complete,path"
+
+let g:snowdrop#libclang_directory = "/user/lib/x86_64-linux-gnu/"
+let g:snowdrop#include_paths = {
+\ "cpp" : [
+\   "/home/wyang/katran/katran/.",
+\ ]
+\}
+
+let g:snowdrop#command_options = {
+\ "cpp" : "-std=gnu++14 -g -O2 -Wall -Werror -Wno-sign-compare -Wno-bool-compare -Wno-error=unused-variable -Woverloaded-virtual -Wnon-virtual-dtor -Wno-maybe-uninitialized -Wdeprecated-declarations -Wno-error=deprecated-declarations",
+\}
+
+
 
 """" Haskell Conceal
 let hscoptions="𝐒𝐓𝐄𝐌wRTBQZDC"
