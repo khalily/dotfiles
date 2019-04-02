@@ -128,7 +128,7 @@ call dein#add('tpope/vim-fugitive')                                   " Git inte
 call dein#add('airblade/vim-gitgutter')                               " Git gutter
 
 """" Render code
-call dein#add('sheerun/vim-polyglot')                                 " Many many syntaxes
+"call dein#add('sheerun/vim-polyglot')                                 " Many many syntaxes
 call dein#add('ap/vim-css-color')                                     " Colors in CSS
 call dein#add('euclio/vim-markdown-composer',
       \ {'build': 'cargo build --release'})                           " Instantly preview markdown
