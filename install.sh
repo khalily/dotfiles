@@ -91,6 +91,7 @@ pyenv deactivate py2neovim
 
 echo -e "================================"
 echo -e "   \nInstall Successful.\n"
+echo -e "   \nsource your ~/.bashrc or ~/.zshrc"
 echo -e "================================"
 echo -e  "\nopen your nvim.\n"
 
