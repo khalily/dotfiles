@@ -94,6 +94,7 @@ call dein#add('scrooloose/nerdtree')                                  " File nav
 "call dein#add('ludovicchabant/vim-gutentags')                         " Automatically generate tags
 call dein#add('mileszs/ack.vim')                                      " Ack search code
 "call dein#add('osyo-manga/vim-snowdrop')                              " libclang in Vim
+call dein#add('brookhong/cscope.vim')                                  " cscope manager
 
 """" Navigate files, buffers and panes
 call dein#add('airblade/vim-rooter')                                  " Change working directory to the project root
@@ -820,7 +821,7 @@ nmap <leader>l <Plug>(qf_qf_toggle)
 
 """" ctrlp
 let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|pyc)$'
 "let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
 autocmd BufEnter ControlP let b:ale_enabled = 0
@@ -895,12 +896,34 @@ noremap <Leader>f :call Find()<CR>
 """" CompleteParameter
 let g:complete_parameter_use_ultisnips_mapping = 1
 
+
 """" undo tree
 "if has("persistent_undo")
     "set undodir=~/.undodir/
     "set undofile
 "endif
 nnoremap <F5> :UndotreeToggle<cr>
+
+"""" cscope
+nnoremap <leader>fa :call CscopeFindInteractive(expand('<cword>'))<CR>
+nnoremap <leader>l :call ToggleLocationList()<CR>
+" s: Find this C symbol
+nnoremap  <leader>fs :call CscopeFind('s', expand('<cword>'))<CR>
+" g: Find this definition
+nnoremap  <leader>fg :call CscopeFind('g', expand('<cword>'))<CR>
+" d: Find functions called by this function
+nnoremap  <leader>fd :call CscopeFind('d', expand('<cword>'))<CR>
+" c: Find functions calling this function
+nnoremap  <leader>fc :call CscopeFind('c', expand('<cword>'))<CR>
+" t: Find this text string
+nnoremap  <leader>ft :call CscopeFind('t', expand('<cword>'))<CR>
+" e: Find this egrep pattern
+nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
+" f: Find this file
+nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
+" i: Find files #including this file
+nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
+
 """ Functions
 """" Removes trailing whitespace
 function! RemoveTrailingSpaces()
