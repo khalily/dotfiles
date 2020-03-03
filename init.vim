@@ -206,6 +206,7 @@ set shortmess+=I                                                   " Don't show 
 set shortmess+=c                                                   " Don't echo while autocompletion in insert mode
 set autoread                                                       " Auto load change
 set showcmd
+set cmdheight=2
 set shortmess=atI
 set showtabline=2
 set sidescrolloff=3                                                " Number of columns to keep on the left/right of the cursor
@@ -625,7 +626,7 @@ let g:deoplete#enable_at_startup = 1
 
 call deoplete#custom#option('auto_refresh_delay', 10)
 call deoplete#custom#option('auto_complete_delay', 10)
-call deoplete#custom#option('refresh_always', v:false)
+call deoplete#custom#option('refresh_always', v:true)
 call deoplete#custom#source('_', 'min_pattern_length', 1)
 call deoplete#custom#source('_', 'matchers', ['matcher_fuzzy'])
 call deoplete#custom#source('around', 'rank', 100)
@@ -713,7 +714,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_types = 1
 
 """" C/C++
-let g:clang_library_path = '/usr/lib/x86_64-linux-gnu/libclang-3.8.so'
+let g:clang_library_path = '/usr/lib/llvm-6.0/lib/libclang.so'
 
 let g:clang_auto_user_options = "compile_commands.json,.clang_complete,path"
 
@@ -875,7 +876,7 @@ if has('macunix')
   nmap <leader>d :Dash<CR>
 endif
 """" neoformat
-let g:neoformat_enabled_python = ['autopep8']
+let g:neoformat_enabled_python = ['black']
 
 """" Ack
 if executable('ag')
