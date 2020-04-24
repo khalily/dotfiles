@@ -216,6 +216,7 @@ set splitbelow
 set splitright
 set tabstop=2
 set title                                                          " Change terminal title based on the file name
+set modelineexpr
 set updatetime=100
 "set virtualedit=all
 set wildmode=longest,list,full
