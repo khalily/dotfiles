@@ -206,7 +206,7 @@ set shortmess+=I                                                   " Don't show 
 set shortmess+=c                                                   " Don't echo while autocompletion in insert mode
 set autoread                                                       " Auto load change
 set showcmd
-set cmdheight=2
+set cmdheight=1
 set shortmess=atI
 set showtabline=2
 set sidescrolloff=3                                                " Number of columns to keep on the left/right of the cursor
@@ -460,7 +460,7 @@ vnoremap <silent> # :<C-U>
 """ Plugins configuration
 """" Air Line
 let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#tmuxline#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
 let g:ale_pattern_options = {'\.txt$': {'ale_enabled': 0}}
@@ -484,7 +484,6 @@ let g:airline_symbols.notexists = '∄'
 let g:airline_symbols.whitespace = 'Ξ'
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline_theme='onedark'
-"let airline#extensions#tmuxline#snapshot_file = "~/.tmux-statusline-colors.conf"
 
 """" ALE
 let g:ale_open_list = 0
@@ -804,7 +803,7 @@ augroup vim-gutentags
 augroup END
 
 """" vim-rooter
-let g:rooter_use_lcd = 1
+let g:rooter_cd_cmd="lcd"
 let g:rooter_silent_chdir = 1
 let g:rooter_resolve_links = 1
 
