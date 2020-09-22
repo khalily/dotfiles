@@ -74,19 +74,21 @@ EOF
   source ~/.zshrc
 fi
 
-sudo pip install autopep8
-sudo pip install flake8
 pyenv install -s 3.6.5
 CONFIGURE_OPTS="--enable-shared" pyenv virtualenv 3.6.5 py3neovim
 pyenv activate py3neovim
 pip install neovim
 pyenv deactivate py3neovim
 
-pyenv install -s 2.7.11
-CONFIGURE_OPTS="--enable-shared" pyenv virtualenv 2.7.11 py2neovim
+pyenv install -s 2.7.18
+CONFIGURE_OPTS="--enable-shared" pyenv virtualenv 2.7.18 py2neovim
 pyenv activate py2neovim
 pip install neovim
 pyenv deactivate py2neovim
+
+pyenv global 3.6.5
+pip install autopep8
+pip install flake8
 
 
 echo -e "================================"

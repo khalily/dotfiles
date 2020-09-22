@@ -21,13 +21,14 @@ dotfiles support nvim
  ### tmux 配置
  ```bash
  ln -sf ~/.config/nvim/tmux.conf ~/.tmux.conf
- ln -sf ~/.config/nvim/tmux-statusline-color.conf ~/.tmux-statusline-color.conf
  ```
 
  ### 安装字体
  ```bash
  打开 fonts/consola.ttf 安装，并在终端中设置字体为 consola
  ```
+
+ ### 打开 nvim 稍等片刻，等待插件安装完毕即可使用
 
 ## nvim 快捷键
 
