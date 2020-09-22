@@ -33,11 +33,13 @@ xz-utils tk-dev libffi-dev liblzma-dev libssl1.0-dev
   make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=~/.nvim"
   make install
 
-  git clone https://github.com/tmux/tmux.git /tmp/tmux
-  cd /tmp/tmux
-  sh autogen.sh
-  ./configure --prefix="$HOME/.tmux" && make -j12
-  make install
+  pushd /tmp
+  wget https://github.com/tmux/tmux/releases/download/2.9a/tmux-2.9a.tar.gz
+  tar -zxf tmux-2.9a.tar.gz
+  pushd tmux-2.9a
+  ./configure --prefix="$HOME/.tmux" && make -j12 && make install
+  popd
+  popd
 
   curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
   git clone https://github.com/yyuu/pyenv-virtualenv.git  ~/.pyenv/plugins/pyenv-virtualenv
