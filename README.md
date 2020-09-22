@@ -21,6 +21,8 @@ dotfiles support nvim
  ### tmux 配置
  ```bash
  ln -sf ~/.config/nvim/tmux.conf ~/.tmux.conf
+
+ ~/.tmux/bin/tmux
  ```
 
  ### 安装字体
