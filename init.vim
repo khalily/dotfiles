@@ -16,6 +16,7 @@ call dein#begin(expand('~/.cache/dein'))
 """" Plugin manager
 call dein#add('Shougo/dein.vim')
 call dein#add('haya14busa/dein-command.vim')
+call dein#add('wsdjeg/dein-ui.vim')
 
 
 """" Look & feel
@@ -27,6 +28,7 @@ call dein#add('mhartington/oceanic-next')       " Color theme
 call dein#add('morhetz/gruvbox')                " Color theme
 call dein#add('joshdick/onedark.vim')           " Color theme
 call dein#add('w0ng/vim-hybrid')                " Color theme
+call dein#add('altercation/vim-colors-solarized') " Color theme
 call dein#add('vim-airline/vim-airline')        " Bottom Line
 call dein#add('vim-airline/vim-airline-themes') " Bottom Line theme
 call dein#add('edkolev/tmuxline.vim')           " Tmuxline
@@ -118,7 +120,7 @@ call dein#add('carlitux/deoplete-ternjs')                                       
 call dein#add('fishbullet/deoplete-ruby')                                         " Ruby
 "call dein#add('wellle/tmux-complete.vim')                                         " Tmux panes
 call dein#add('ervandew/supertab')                                                " tab completion
-call dein#add('zchee/deoplete-go', {'build': 'make'})                             " Go
+"call dein#add('zchee/deoplete-go', {'build': 'make'})                             " Go
 "call dein#add('zchee/deoplete-clang')                                             " C/C++/Object-C
 call dein#add('Rip-Rip/clang_complete', {'build': 'make install'})                " C/C++/Object-C
 call dein#add('zchee/deoplete-zsh')                                               " ZSH
@@ -135,7 +137,7 @@ call dein#add('euclio/vim-markdown-composer',
       \ {'build': 'cargo build --release'})                           " Instantly preview markdown
 
 """" Lint code
-call dein#add('w0rp/ale')
+"call dein#add('w0rp/ale')
 
 """" Language-specific
 """"" Haskell
@@ -233,17 +235,18 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
-set background=dark
 "let ayucolor="dark"
 "let ayucolor="mirage"
 "let ayucolor="light"
 "let python_highlight_all=1
 "colorscheme ayu
 "colorscheme palenight
-colorscheme hybrid
+"colorscheme hybrid
 "let g:gruvbox_italic=1
 "let g:gruvbox_invert_selection=0
 "colorscheme gruvbox
+colorscheme solarized
+set background=light
 "hi Normal ctermbg=NONE guibg=NONE
 
 """" System
@@ -486,6 +489,7 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline_theme='onedark'
 
 """" ALE
+let g:ale_completion_enabled = 0
 let g:ale_open_list = 0
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_keep_list_window_open = 0
@@ -632,6 +636,9 @@ call deoplete#custom#source('_', 'matchers', ['matcher_fuzzy'])
 call deoplete#custom#source('around', 'rank', 100)
 call deoplete#custom#source('ultisnips', 'rank', 1000)
 call deoplete#custom#source('buffer', 'rank', 999)
+call deoplete#custom#option('omni_patterns', {
+\ 'go': '[^. *\t]\.\w*',
+\})
 "set completeopt+=noinsert
 
 """" Deoplete-jedi (Python completion)
@@ -924,6 +931,8 @@ nnoremap  <leader>fe :call CscopeFind('e', expand('<cword>'))<CR>
 nnoremap  <leader>ff :call CscopeFind('f', expand('<cword>'))<CR>
 " i: Find files #including this file
 nnoremap  <leader>fi :call CscopeFind('i', expand('<cword>'))<CR>
+
+let g:cscope_silent=1
 
 """ Functions
 """" Removes trailing whitespace
