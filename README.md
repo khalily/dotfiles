@@ -6,6 +6,19 @@ dotfiles support nvim
 
 ## 安装
 
+### 核心特性
+
+- **Neovim + Tmux 一键安装**: `install.sh` 自动完成 Neovim、Tmux、CMake、Pyenv 的安装和配置
+- **跨平台支持**: Linux (Debian/Ubuntu) 和 macOS (Apple Silicon + Intel) 完全支持
+- **⚠️ 手动配置项**: Tmux 配置和字体需要手动安装（见下方步骤）
+
+### 平台差异
+
+| 平台 | Neovim/Tmux 安装方式 | 依赖管理 |
+|------|---------------------|---------|
+| **Linux** | 源码编译安装到 `~/.nvim` / `~/.tmux` | apt-get |
+| **macOS** | 优先 Homebrew，版本不足时自动源码编译 | Homebrew |
+
 ### 一键安装
 
 ```bash
@@ -28,18 +41,18 @@ source ~/.zshrc    # zsh 用户
 git clone https://github.com/khalily/dotfiles ~/.config/nvim
 ```
 
-#### 2. 运行安装脚本
+#### 2. 运行安装脚本（自动安装 Neovim + Tmux）
 ```bash
 cd ~/.config/nvim
 ./install.sh
 ```
 
-#### 3. tmux 配置
+#### 3. ⚠️ 手动配置 tmux
 ```bash
 ln -sf ~/.config/nvim/tmux.conf ~/.tmux.conf
 ```
 
-#### 4. 安装字体
+#### 4. ⚠️ 手动安装字体
 ```bash
 打开 fonts/consola.ttf 安装，并在终端中设置字体为 consola
 ```
