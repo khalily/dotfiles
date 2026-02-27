@@ -81,14 +81,16 @@ export NVIM_VERSION="v0.9.5"
 
 ### 安装内容
 
-| 组件 | 版本 | 安装方式 | 位置 |
-|------|------|----------|------|
-| CMake | 3.28.1+ | 预编译二进制 | `~/.cmake` |
-| Neovim | master/v0.9.5+ | 源码编译 | `~/.nvim` |
-| Tmux | 3.5a+ | 源码编译 | `~/.tmux` |
-| Pyenv | latest | git clone | `~/.pyenv` |
+| 组件 | 版本要求 | Linux 安装方式 | macOS 安装方式 | 位置 |
+|------|---------|---------------|---------------|------|
+| CMake | >= 3.16.0 | 预编译二进制 3.28.1 | Homebrew 或源码编译 | `~/.cmake` (Linux) / Homebrew (macOS) |
+| Neovim | latest | 源码编译 (master) | Homebrew 或源码编译 | `~/.nvim` (Linux) / Homebrew (macOS) |
+| Tmux | >= 2.9a | 源码编译 3.5a | Homebrew 或源码编译 | `~/.tmux` (Linux) / Homebrew (macOS) |
+| Pyenv | latest | git clone | git clone | `~/.pyenv` |
 
-**注意**: 安装脚本会跳过 apt-get 安装 nvim/tmux/pyenv，优先使用本地编译/下载的版本。
+**Linux 注意**: 安装脚本会跳过 apt-get 安装 nvim/tmux/pyenv，优先使用本地编译/下载的版本。
+
+**macOS 注意**: 优先使用 Homebrew 安装，若版本不足则自动从源码编译。需要提前安装 Xcode Command Line Tools 和 Homebrew（脚本会自动检测并提示安装）。
 
 ## nvim 快捷键
 
