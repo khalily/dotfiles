@@ -1,5 +1,4 @@
 
-
 dotfiles support nvim
 ========
 ![](screenshots/vim.jpg)
@@ -7,30 +6,76 @@ dotfiles support nvim
 
 ## 安装
 
+### 一键安装
 
- ### 安装 nvim
- ```bash
- curl -L https://raw.githubusercontent.com/khalily/dotfiles/master/install.sh | bash
- ```
+```bash
+git clone https://github.com/khalily/dotfiles ~/.config/nvim
+cd ~/.config/nvim
+./install.sh
+```
 
- ### clone nvim 配置
- ```bash
- git clone https://github.com/khalily/dotfiles ~/.config/nvim
- ```
+安装完成后重启 shell 或执行:
+```bash
+source ~/.bashrc   # bash 用户
+# 或
+source ~/.zshrc    # zsh 用户
+```
 
- ### tmux 配置
- ```bash
- ln -sf ~/.config/nvim/tmux.conf ~/.tmux.conf
+### 手动安装步骤
 
- ~/.tmux/bin/tmux
- ```
+#### 1. clone 配置
+```bash
+git clone https://github.com/khalily/dotfiles ~/.config/nvim
+```
 
- ### 安装字体
- ```bash
- 打开 fonts/consola.ttf 安装，并在终端中设置字体为 consola
- ```
+#### 2. 运行安装脚本
+```bash
+cd ~/.config/nvim
+./install.sh
+```
 
- ### 打开 nvim 稍等片刻，等待插件安装完毕即可使用
+#### 3. tmux 配置
+```bash
+ln -sf ~/.config/nvim/tmux.conf ~/.tmux.conf
+```
+
+#### 4. 安装字体
+```bash
+打开 fonts/consola.ttf 安装，并在终端中设置字体为 consola
+```
+
+#### 5. 打开 nvim 稍等片刻，等待插件安装完毕即可使用
+
+### 卸载
+
+```bash
+cd ~/.config/nvim
+./uninstall.sh
+```
+
+### 环境变量
+
+| 变量 | 说明 | 默认值 |
+|------|------|--------|
+| `NVIM_VERSION` | Neovim 版本/分支 | `master` |
+| `NVIM_MIRROR` | Neovim 下载镜像 | GitHub |
+
+示例:
+```bash
+export NVIM_VERSION="v0.9.5"
+./install.sh
+```
+
+### 安装内容
+
+| 组件 | 版本 | 安装方式 | 位置 |
+|------|------|----------|------|
+| CMake | 3.28.1+ | 预编译二进制 | `~/.cmake` |
+| Neovim | master/v0.9.5+ | 源码编译 | `~/.nvim` |
+| Tmux | 3.5a+ | 源码编译 | `~/.tmux` |
+| Pyenv | latest | git clone | `~/.pyenv` |
+
+**注意**: 安装脚本会跳过 apt-get 安装 nvim/tmux/pyenv，优先使用本地编译/下载的版本。
 
 ## nvim 快捷键
 
@@ -72,12 +117,13 @@ dotfiles support nvim
 | 快捷键	       | 说明                                 |
 | -------	       | -----                                |
 | `<Ctrl>a`	       | Prefix Key                           |
-| `<Prefix>c`	       | 创建新窗口              	      |
-| `<Prefix><Ctrl>a`    | 回到上一个窗口                       |
-| `<Prefix>-`	       | 水平分割窗口                         |
-| `<Prefix>\|`	       | 垂直分割窗口                         |
-| `<Prefix>[`	       | 像vim一样操作当前窗口                |
+| `<Prefix>c`	   | 创建新窗口              	      |
+| `<Prefix><Ctrl>a` | 回到上一个窗口                       |
+| `<Prefix>-`	   | 水平分割窗口                         |
+| `<Prefix>\|`	   | 垂直分割窗口                         |
+| `<Prefix>[`	   | 像vim一样操作当前窗口                |
 | `<Ctrl>j`	       | 向下移动窗口                         |
 | `<Ctrl>k`	       | 向上移动窗口                         |
 | `<Ctrl>l`	       | 向右移动窗口                         |
 | `<Ctrl>h`	       | 向左移动窗口                         |
+
