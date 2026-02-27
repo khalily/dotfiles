@@ -133,8 +133,9 @@ call dein#add('airblade/vim-gitgutter')                               " Git gutt
 """" Render code
 "call dein#add('sheerun/vim-polyglot')                                 " Many many syntaxes
 call dein#add('ap/vim-css-color')                                     " Colors in CSS
-call dein#add('euclio/vim-markdown-composer',
-      \ {'build': 'cargo build --release'})                           " Instantly preview markdown
+" Markdown preview disabled - requires Rust/Cargo compilation
+" call dein#add('euclio/vim-markdown-composer',
+"       \ {'build': 'cargo build --release'})                           " Instantly preview markdown
 
 """" Lint code
 "call dein#add('w0rp/ale')
